@@ -1,0 +1,70 @@
+<p>
+  <a routerLink="/admin/products/new" mat-raised-button color="primary"
+    >New Product</a
+  >
+</p>
+<!--
+  <p>
+    <input
+      #query
+      (keyup)="filter(query.value)"
+      type="text"
+      class="form-control"
+      placeholder="Search"
+    />
+  </p>
+-->
+
+<mat-form-field class="full-width">
+  <input
+    matInput
+    (keyup)="applyFilter($event.target.value)"
+    placeholder="Search"
+  />
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <mat-spinner [style.display]="loading ? 'block' : 'none'"></mat-spinner>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <!-- Title Column -->
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Title
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.title }} </mat-cell>
+    </ng-container>
+
+    <!-- Price Column -->
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Price
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.price }} </mat-cell>
+    </ng-container>
+
+    <!-- Operations Column -->
+    <ng-container matColumnDef="operations">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button color="primary" (click)="delete(row.key, row.title)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <a
+          mat-button
+          color="primary"
+          [routerLink]="['/admin/products/', row.key]"
+        >
+          <mat-icon>edit</mat-icon></a
+        >
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

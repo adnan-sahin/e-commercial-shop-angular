@@ -1,0 +1,431 @@
+<!-- ANGULAR MATERIAL DESIGN(TEMPLATE DRIVEN FORMS) -->
+
+<!-- <div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && save(f.value)">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            #title="ngModel"
+            [(ngModel)]="product.title"
+            name="title"
+            id="title"
+            type="text"
+            required
+            placeholder="Title"
+          />
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+          Title is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input
+            type="number"
+            matInput
+            placeholder="Price"
+            #price="ngModel"
+            [(ngModel)]="product.price"
+            name="price"
+            id="price"
+            type="number"
+            required
+            [min]="0"
+          />
+          <mat-icon matSuffix>$</mat-icon>
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+          <div *ngIf="price.errors.required">Price is required.</div>
+          <div *ngIf="price.errors.min">Price shoud be 0 or higher.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select
+            #category="ngModel"
+            matNativeControl
+            placeholder="Category"
+            [(ngModel)]="product.category"
+            name="category"
+            required
+          >
+            <mat-option value="" disabled selected></mat-option>
+            <mat-option
+              *ngFor="let c of (categories$ | async)"
+              [value]="c.key"
+              >{{ c.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <div
+          class="alert alert-danger"
+          *ngIf="category.touched && category.invalid"
+        >
+          <div *ngIf="category.errors?.required">Category is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input
+          #imageUrl="ngModel"
+          [(ngModel)]="product.imageUrl"
+          name="imageUrl"
+          id="imageUrl"
+          type="text"
+          class="form-control"
+          required
+          url
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="imageUrl.touched && imageUrl.invalid"
+        >
+          <div *ngIf="imageUrl.errors?.required">Image Url is required.</div>
+          <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
+        </div>
+      </div>
+      <button mat-raised-button color="primary">
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </form>
+  </div>
+  <div class="col-md-6" style="margin-top:30px">
+    <div class="card">
+      <img
+        style="height:300px;"
+        class="card-img-top"
+        [src]="product.imageUrl"
+        *ngIf="product.imageUrl"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.price | currency: 'USD':true }}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- ./ ANGULAR MATERIAL DESIGN(TEMPLATE DRIVEN FORMS) -->
+
+<!-- BOOTSTRAP DESIGN -->
+<!-- <div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="productForm" (ngSubmit)="save()">
+      <div class="form-group">
+        <div class="full-width">
+          <label for="title" class="form-label">Title</label>
+          <input
+            [(ngModel)]="product.title"
+            formControlName="title"
+            type="text"
+            placeholder="Title"
+            class="form-control"
+          />
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="f.title.touched && f.title.invalid"
+        >
+          <div *ngIf="f.title.errors?.required">Title is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="full-width">
+          <label for="price">Price</label>
+          <input
+            type="number"
+            placeholder="Price"
+            [(ngModel)]="product.price"
+            formControlName="price"
+            type="number"
+            class="form-control"
+          />
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="f.price.touched && f.price.invalid"
+        >
+          <div *ngIf="f.price.errors?.required">Price is required.</div>
+          <div *ngIf="f.price.errors?.min">Price shoud be 0 or higher.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <label for="imageUrl">Category</label>
+          <ng-select
+            placeholder="Select category"
+            [searchable]="true"
+            formControlName="category"
+            [(ngModel)]="product.category"
+          >
+            <ng-option
+              *ngFor="let c of (categories$ | async)"
+              [value]="c.key"
+              >{{ c.name }}</ng-option
+            >
+          </ng-select>
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="f.category.touched && f.category.invalid"
+        >
+          <div *ngIf="f.category.errors?.required">Category is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input
+          formControlName="imageUrl"
+          [(ngModel)]="product.imageUrl"
+          type="text"
+          class="form-control"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="f.imageUrl.touched && f.imageUrl.invalid"
+        >
+          <div *ngIf="f.imageUrl.errors?.required">Image Url is required.</div>
+          <div
+            *ngIf="!f.imageUrl.errors?.required && f.imageUrl.errors.invalidUrl"
+          >
+            Please enter a valid URL.
+          </div>
+        </div>
+      </div>
+      <button mat-raised-button color="primary">
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </form>
+  </div>
+  <div class="col-md-6" style="margin-top:30px">
+    <div class="card">
+      <img
+        style="height:300px;"
+        class="card-img-top"
+        [src]="product.imageUrl"
+        *ngIf="!f.imageUrl.errors?.invalidUrl && product.imageUrl"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.price | currency: 'USD':true }}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- ./ BOOTSTRAP DESIGN -->
+
+<!-- ANGULAR MATERIAL DESIGN(REACTIVE FORMS) -->
+
+<!-- <div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="productForm" (ngSubmit)="save()">
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              [(ngModel)]="product.title"
+              formControlName="title"
+              type="text"
+              placeholder="Title"
+            />
+          </mat-form-field>
+          <div
+            class="alert alert-danger"
+            *ngIf="f.title.touched && f.title.invalid"
+          >
+            <div *ngIf="f.title.errors?.required">Title is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <input
+              type="number"
+              matInput
+              placeholder="Price"
+              [(ngModel)]="product.price"
+              formControlName="price"
+              type="number"
+            />
+            <mat-icon matSuffix>$</mat-icon>
+          </mat-form-field>
+          <div
+            class="alert alert-danger"
+            *ngIf="f.price.touched && f.price.invalid"
+          >
+            <div *ngIf="f.price.errors?.required">Price is required.</div>
+            <div *ngIf="f.price.errors?.min">Price shoud be 0 or higher.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div>
+            <ng-select
+              placeholder="Select category"
+              [searchable]="true"
+              formControlName="category"
+              [(ngModel)]="product.category"
+            >
+              <ng-option
+                *ngFor="let c of (categories$ | async)"
+                [value]="c.key"
+                >{{ c.name }}</ng-option
+              >
+            </ng-select>
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="f.category.touched && f.category.invalid"
+          >
+            <div *ngIf="f.category.errors?.required">Category is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Image Url"
+              formControlName="imageUrl"
+              [(ngModel)]="product.imageUrl"
+              type="text"
+            />
+          </mat-form-field>
+          <div
+            class="alert alert-danger"
+            *ngIf="f.imageUrl.touched && f.imageUrl.invalid"
+          >
+            <div *ngIf="f.imageUrl.errors?.required">Image Url is required.</div>
+            <div
+              *ngIf="!f.imageUrl.errors?.required && f.imageUrl.errors.invalidUrl"
+            >
+              Please enter a valid URL.
+            </div>
+          </div>
+        </div>
+        <button mat-raised-button color="primary">
+          <mat-icon>save</mat-icon> Save
+        </button>
+      </form>
+    </div>
+    <div class="col-md-6" style="margin-top:30px">
+      <div class="card">
+        <img
+          style="height:300px;"
+          class="card-img-top"
+          [src]="product.imageUrl"
+          *ngIf="!f.imageUrl.errors?.invalidUrl && product.imageUrl"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">{{ product.price | currency: 'USD':true }}</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- ./ ANGULAR MATERIAL DESIGN(REACTIVE FORMS) -->
+
+<!-- ANGULAR MATERIAL DESIGN(REACTIVE FORMS) WITH [errorStateMatcher] -->
+
+<div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="productForm" (ngSubmit)="save()">
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            [(ngModel)]="product.title"
+            formControlName="title"
+            type="text"
+            placeholder="Title"
+            [errorStateMatcher]="matcher"
+          />
+          <mat-error *ngIf="f.title.errors?.required">
+            Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input
+            type="number"
+            matInput
+            placeholder="Price"
+            [(ngModel)]="product.price"
+            formControlName="price"
+            type="number"
+            [errorStateMatcher]="matcher"
+          />
+          <mat-icon matSuffix>$</mat-icon>
+          <mat-error *ngIf="f.price.errors?.required"
+            >Price is <strong>required</strong></mat-error
+          >
+          <mat-error *ngIf="f.price.errors?.min"
+            >Price should be 0 or higher</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div>
+          <mat-form-field class="full-width">
+            <mat-select
+              placeholder="Category"
+              formControlName="category"
+              [(ngModel)]="product.category"
+              [errorStateMatcher]="matcher"
+            >
+              <mat-option
+                *ngFor="let c of (categories$ | async)"
+                [value]="c.key"
+                >{{ c.name }}</mat-option
+              >
+            </mat-select>
+            <mat-error *ngIf="f.category.errors?.required"
+              >Category is <strong>required</strong></mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Image Url"
+            formControlName="imageUrl"
+            [(ngModel)]="product.imageUrl"
+            type="text"
+            [errorStateMatcher]="matcher"
+          />
+          <mat-error *ngIf="f.imageUrl.errors?.required"
+            >Image Url is <strong>required</strong></mat-error
+          >
+          <mat-error
+            *ngIf="
+              !f.imageUrl.errors?.required && f.imageUrl.errors?.invalidUrl
+            "
+            >Please enter a valid URL.</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary">
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </form>
+  </div>
+  <div class="col-md-6" style="margin-top:30px">
+    <div class="card">
+      <img
+        style="height:300px;"
+        class="card-img-top"
+        [src]="product.imageUrl"
+        *ngIf="!f.imageUrl.errors?.invalidUrl && product.imageUrl"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.price | currency: 'USD':true }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ./ ANGULAR MATERIAL DESIGN(REACTIVE FORMS) -->

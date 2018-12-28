@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* @import "~@ng-select/ng-select/themes/default.theme.css"; */
+/* // ... or   */
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+body {
+  padding-top: 80px;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+div.alert-danger {
+  margin-top: 0px;
+}
+
+table {
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.full-width {
+  width: 100%;
+}
+.mat-column-title {
+  width: 50%;
+}
+.mat-column-price {
+  width: 20%;
+}
+.mat-spinner {
+  margin: 15px auto;
+}
