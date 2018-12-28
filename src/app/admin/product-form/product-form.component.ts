@@ -14,7 +14,7 @@ import { FormErrorStateMatcher } from 'src/app/validators/FormErrorStateMatcher'
 })
 export class ProductFormComponent implements OnInit {
   categories$;
-  product = {};
+  product;
   id;
   productForm: FormGroup;
 
@@ -47,6 +47,8 @@ export class ProductFormComponent implements OnInit {
         .subscribe(p => {
           this.product = p;
         });
+    } else {
+      this.product = {};
     }
     this.categories$ = this.categoryService.getCategories();
   }

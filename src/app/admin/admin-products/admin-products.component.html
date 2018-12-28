@@ -3,18 +3,6 @@
     >New Product</a
   >
 </p>
-<!--
-  <p>
-    <input
-      #query
-      (keyup)="filter(query.value)"
-      type="text"
-      class="form-control"
-      placeholder="Search"
-    />
-  </p>
--->
-
 <mat-form-field class="full-width">
   <input
     matInput
@@ -27,6 +15,7 @@
   <mat-spinner [style.display]="loading ? 'block' : 'none'"></mat-spinner>
 
   <mat-table [dataSource]="dataSource" matSort>
+    
     <!-- Title Column -->
 
     <ng-container matColumnDef="title">
@@ -37,7 +26,6 @@
     </ng-container>
 
     <!-- Price Column -->
-
     <ng-container matColumnDef="price">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Price
