@@ -4,7 +4,7 @@
 
 /* @import "~@ng-select/ng-select/themes/default.theme.css"; */
 /* // ... or   */
-@import "~@ng-select/ng-select/themes/material.theme.css";
+@import '~@ng-select/ng-select/themes/material.theme.css';
 
 body {
   padding-top: 80px;
@@ -42,4 +42,13 @@ body {
 }
 .mat-spinner {
   margin: 15px auto;
+}
+.mat-card {
+  margin-bottom: 32px;
+}
+.add-to-card:hover {
+  text-decoration: none;
+}
+.new-product:hover {
+  text-decoration: none;
 }

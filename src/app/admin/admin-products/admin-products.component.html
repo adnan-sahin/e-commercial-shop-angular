@@ -1,5 +1,5 @@
 <p>
-  <a routerLink="/admin/products/new" mat-raised-button color="primary"
+  <a  href="#" class="new-product" routerLink="/admin/products/new" mat-raised-button color="primary"
     >New Product</a
   >
 </p>
@@ -17,7 +17,6 @@
   <mat-table [dataSource]="dataSource" matSort>
     
     <!-- Title Column -->
-
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Title

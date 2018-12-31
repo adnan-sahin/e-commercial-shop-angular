@@ -1,3 +1,49 @@
-<p>
-  products works!
-</p>
+<div class="row">
+  <div class="col-3">
+    <div class="list-group">
+      <a
+        class="list-group-item list-group-item-action"
+        routerLink="/"
+        [class.active]="!selectedCategory"
+      >
+        All Categories
+      </a>
+      <a
+        routerLink="/"
+        [queryParams]="{ category: category.key }"
+        [class.active]="selectedCategory == category.key"
+        class="list-group-item list-group-item-action"
+        *ngFor="let category of (categories$ | async)"
+      >
+        {{ category.name }}
+      </a>
+    </div>
+  </div>
+  <div class="col">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="center">
+      <mat-card
+        *ngFor="let product of filteredProducts"
+        fxFlex="0 0 calc(33.3% - 32px)"
+        fxFlex.lt-md="0 0 calc(50% - 32px)"
+        fxFlex.lt-sm="100%"
+        class="mat-card"
+      >
+        <img
+          mat-card-image
+          height="200px"
+          [src]="product.imageUrl"
+          [alt]="product.title"
+        />
+        <mat-card-content>
+          <h5>{{ product.title }}</h5>
+          <h6>{{ product.price | currency: 'USD' }}</h6>
+        </mat-card-content>
+        <mat-card-actions>
+          <a href="#" class="add-to-card" mat-raised-button color="warn"
+            >Add to Card</a
+          >
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

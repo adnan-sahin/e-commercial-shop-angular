@@ -33,26 +33,28 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.productService.getAll().subscribe(products => {
       this.products = products;
-      this.dataSource = new MatTableDataSource(this.products);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.loading = false;
-      this.dataSource.filterPredicate = (
-        data: Product,
-        filtersJson: string
-      ) => {
-        const matchFilter = [];
-        const filters = JSON.parse(filtersJson);
-
-        filters.forEach(filter => {
-          const val = data[filter.id] === null ? '' : data[filter.id];
-          matchFilter.push(
-            val.toLowerCase().includes(filter.value.toLowerCase())
-          );
-        });
-        return matchFilter.every(Boolean);
-      };
+      this.initializeTable(products);
     });
+  }
+
+  private initializeTable(products: Product[]) {
+    this.dataSource = new MatTableDataSource(this.products);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.loading = false;
+
+    this.dataSource.filterPredicate = (data: Product, filtersJson: string) => {
+      const matchFilter = [];
+      const filters = JSON.parse(filtersJson);
+
+      filters.forEach(filter => {
+        const val = data[filter.id] === null ? '' : data[filter.id];
+        matchFilter.push(
+          val.toLowerCase().includes(filter.value.toLowerCase())
+        );
+      });
+      return matchFilter.every(Boolean);
+    };
   }
 
   ngOnDestroy(): void {

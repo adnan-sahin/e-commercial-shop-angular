@@ -5,20 +5,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatTableModule,
-  MatPaginatorModule,
-  MatSortModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatButtonModule,
-  MatIconModule,
-  MatTooltipModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatSelectModule
-} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MaterialModule } from './material/material.module';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
@@ -60,21 +49,12 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     ReactiveFormsModule,
     CustomFormsModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatSortModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    MatProgressSpinnerModule,
+    MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     NgSelectModule,
+    FlexLayoutModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {
@@ -115,7 +95,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
       { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'login', component: LoginComponent },
-      { path: '', component: HomeComponent }
+      { path: '', component: ProductsComponent }
     ])
   ],
   providers: [],

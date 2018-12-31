@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
 export class CategoryService {
   constructor(private db: AngularFireDatabase) {}
 
-  getCategories() {
+  getAll() {
     return this.db
       .list("/categories", ref => {
         return ref.orderByChild("name");

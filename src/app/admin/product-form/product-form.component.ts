@@ -50,7 +50,7 @@ export class ProductFormComponent implements OnInit {
     } else {
       this.product = {};
     }
-    this.categories$ = this.categoryService.getCategories();
+    this.categories$ = this.categoryService.getAll();
   }
 
   save() {
