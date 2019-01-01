@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/category.service';
 import { ProductService } from 'src/app/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CustomValidator } from 'src/app/validators/CustomValidator';
 import { FormErrorStateMatcher } from 'src/app/validators/FormErrorStateMatcher';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-product-form',
@@ -46,7 +47,8 @@ export class ProductFormComponent implements OnInit {
         .pipe(take(2))
         .subscribe(p => {
           this.product = p;
-        });
+        })
+
     } else {
       this.product = {};
     }

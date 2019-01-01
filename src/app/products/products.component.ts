@@ -21,40 +21,24 @@ export class ProductsComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private categoryService: CategoryService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.categories$ = this.categoryService.getAll();
 
-    const queryParamMap$ = this.route.queryParamMap;
-    const products$ = this.productService.getAll();
-
     this.route.queryParamMap
       .pipe(
-        concatMap(params => {
+        switchMap(params => {
           this.selectedCategory = params.get('category');
-          console.log(this.selectedCategory);
           return this.productService.getAll();
         })
       )
       .subscribe(products => {
-        console.log(products);
         this.products = products;
-        console.log(this.selectedCategory);
         this.filteredProducts = this.selectedCategory
           ? this.products.filter(p => p.category == this.selectedCategory)
           : this.products;
       });
 
-    // this.productService.getAll().subscribe(products => {
-    //   this.products = products;
-    //   this.route.queryParamMap.subscribe(params => {
-    //     this.selectedCategory = params.get('category');
-
-    //     this.filteredProducts = this.selectedCategory
-    //       ? this.products.filter(p => p.category == this.selectedCategory)
-    //       : this.products;
-    //   });
-    // });
   }
 }

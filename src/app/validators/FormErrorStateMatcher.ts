@@ -7,9 +7,6 @@ export class FormErrorStateMatcher implements ErrorStateMatcher {
     form: FormGroupDirective | NgForm | null
   ): boolean {
     const isSubmitted = form && form.submitted;
-    console.log('dirty:' + control.dirty);
-    console.log('touched:' + control.touched);
-    console.log('submitted:' + isSubmitted);
 
     return !!(
       control &&
