@@ -11,8 +11,8 @@
     <h6>{{ product.price | currency: 'USD' }}</h6>
   </mat-card-content>
   <mat-card-actions *ngIf="showActions">
-    <a href="#" class="add-to-card" mat-raised-button color="warn"
-      >Add to Card</a
-    >
+    <button (click)="addToCard(product)" class="add-to-card" mat-raised-button color="warn">
+      Add to Card
+    </button>
   </mat-card-actions>
 </mat-card>

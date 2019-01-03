@@ -1,5 +1,6 @@
 .add-to-card {
   display: block;
+  width: 100%;
 }
 .add-to-card:hover {
   text-decoration: none;
