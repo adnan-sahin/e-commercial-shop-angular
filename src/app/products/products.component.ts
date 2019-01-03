@@ -1,4 +1,4 @@
-import { switchMap, concatMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private categoryService: CategoryService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.categories$ = this.categoryService.getAll();
@@ -39,6 +39,5 @@ export class ProductsComponent implements OnInit {
           ? this.products.filter(p => p.category == this.selectedCategory)
           : this.products;
       });
-
   }
 }

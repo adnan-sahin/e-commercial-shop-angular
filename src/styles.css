@@ -43,12 +43,10 @@ body {
 .mat-spinner {
   margin: 15px auto;
 }
-.mat-card {
-  margin-bottom: 32px;
-}
 .add-to-card:hover {
   text-decoration: none;
 }
 .new-product:hover {
   text-decoration: none;
 }
+
