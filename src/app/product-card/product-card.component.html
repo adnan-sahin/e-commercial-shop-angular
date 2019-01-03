@@ -1,0 +1,18 @@
+<mat-card *ngIf="product.title || product.imageUrl || product.price">
+  <img
+    *ngIf="product.imageUrl"
+    mat-card-image
+    height="200px"
+    [src]="product.imageUrl"
+    [alt]="product.title"
+  />
+  <mat-card-content>
+    <h5>{{ product.title }}</h5>
+    <h6>{{ product.price | currency: 'USD' }}</h6>
+  </mat-card-content>
+  <mat-card-actions *ngIf="showActions">
+    <a href="#" class="add-to-card" mat-raised-button color="warn"
+      >Add to Card</a
+    >
+  </mat-card-actions>
+</mat-card>

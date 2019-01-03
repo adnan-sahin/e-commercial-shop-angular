@@ -1,4 +1,4 @@
-.product-container {
+.products-container {
   display: flex;
   flex-flow: row;
 }
@@ -32,7 +32,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .product-container {
+  .products-container {
     flex-flow: column;
   }
   .nav-product {

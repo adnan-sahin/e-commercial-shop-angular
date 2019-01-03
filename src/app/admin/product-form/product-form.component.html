@@ -375,14 +375,8 @@
       </button>
     </form>
   </div>
-  <div *ngIf="product.title || product.imageUrl || product.price" class="col-md-6" style="margin-top:30px">
-    <div class="card">
-      <img style="height:300px;" class="card-img-top" [src]="product.imageUrl" *ngIf="!f.imageUrl.errors?.invalidUrl && product.imageUrl" />
-      <div class="card-body">
-        <h5 class="card-title">{{ product.title }}</h5>
-        <p class="card-text">{{ product.price | currency: 'USD':true }}</p>
-      </div>
-    </div>
+  <div class="col-md-6" style="margin-top:30px">
+    <product-card [product]="product" [show-actions]="false"></product-card>
   </div>
 </div>
 

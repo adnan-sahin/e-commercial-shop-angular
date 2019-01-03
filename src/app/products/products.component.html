@@ -1,41 +1,12 @@
-<div class="product-container">
+<div class="products-container">
   <nav class="nav-product">
-    <div class="list-group">
-      <a
-        class="list-group-item list-group-item-action"
-        routerLink="/"
-        [class.active]="!selectedCategory"
-      >
-        All Categories
-      </a>
-      <a
-        routerLink="/"
-        [queryParams]="{ category: category.key }"
-        [class.active]="selectedCategory == category.key"
-        class="list-group-item list-group-item-action"
-        *ngFor="let category of (categories$ | async)"
-      >
-        {{ category.name }}
-      </a>
-    </div>
+    <product-filter [category]="category"></product-filter>
   </nav>
   <div class="card-container">
-    <mat-card class="card" *ngFor="let product of filteredProducts">
-      <img
-        mat-card-image
-        height="200px"
-        [src]="product.imageUrl"
-        [alt]="product.title"
-      />
-      <mat-card-content>
-        <h5>{{ product.title }}</h5>
-        <h6>{{ product.price | currency: 'USD' }}</h6>
-      </mat-card-content>
-      <mat-card-actions>
-        <a href="#" class="add-to-card" mat-raised-button color="warn"
-          >Add to Card</a
-        >
-      </mat-card-actions>
-    </mat-card>
+    <product-card
+      *ngFor="let product of filteredProducts"
+      [product]="product"
+      class="card"
+    ></product-card>
   </div>
 </div>

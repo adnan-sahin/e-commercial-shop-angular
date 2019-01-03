@@ -43,9 +43,7 @@ body {
 .mat-spinner {
   margin: 15px auto;
 }
-.add-to-card:hover {
-  text-decoration: none;
-}
+
 .new-product:hover {
   text-decoration: none;
 }
