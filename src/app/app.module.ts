@@ -17,7 +17,6 @@ import { environment } from 'src/environments/environment';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
@@ -29,6 +28,7 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,6 @@ import { ProductCardComponent } from './product-card/product-card.component';
     BsNavbarComponent,
     HomeComponent,
     ProductsComponent,
-    ShoppingCartComponent,
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
@@ -45,7 +44,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     LoginComponent,
     ProductFormComponent,
     ProductFilterComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ShoppingCardComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +97,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
         canActivate: [AuthGuardService, AdminAuthGuardService]
       },
       { path: 'products', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'shopping-card', component: ShoppingCardComponent },
       { path: 'login', component: LoginComponent },
       { path: '', component: ProductsComponent }
     ])

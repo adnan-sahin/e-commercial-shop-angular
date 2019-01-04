@@ -10,21 +10,25 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductCardComponent implements OnInit {
   @Input('product') product: Product;
   @Input('show-actions') showActions: boolean = true;
+  @Input('shopping-card') shoppingCard;
 
   constructor(private shoppingCardService: ShoppingCardService) {}
 
   ngOnInit() {}
 
-  addToCard(product: Product) {
-    let cardId = localStorage.getItem('cardId');
-    if (!cardId) {
-      this.shoppingCardService.create().then(result => {
-        localStorage.setItem('cardId', result.key);
+  addToCard() {
+    this.shoppingCardService.addToCard(this.product);
+  }
 
-        //Add product to card
-      });
-    } else {
-      //Add product to card
-    }
+  removeFromCard(){
+    this.shoppingCardService.removeFromCard(this.product);
+  }
+
+  getQuantity() {
+    if (!this.shoppingCard) return 0;
+
+    let item = this.shoppingCard.items[this.product.key];
+    let quantity = item ? item.quantity : 0;
+    return quantity;
   }
 }
