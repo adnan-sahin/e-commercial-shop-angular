@@ -24,29 +24,20 @@ export class BsNavbarComponent implements OnInit {
 
   async ngOnInit() {
     let items$ = await this.shoppingCardService.getCard();
-    items$.valueChanges().subscribe((result: ProductItem[]) => {
-      console.log('result');
-      console.log(result);
 
-      this.productCountInCard = result
-        .map(p => p.quantity)
-        .reduce(function(a, b) {
-          return a + b;
-        });
-      // result.forEach(function(value: ProductItem, index: number) {
-      //   count = count + value.quantity;
-      // });
+
+
+    items$.valueChanges().subscribe((result) => {
+      console.log('result');
+      if (result && result['items']!=null) {
+        let items = result['items'];
+        console.log(items)
+        this.productCountInCard = Object.keys(items).map(key => items[key]).map(key => key.quantity).reduce((a, b) => { return a + b; })
+      }
+
     });
 
-    // items$.then((result: ProductItem[]) => {
-    //   let count = 0;
-    //   result
-    //     .map(i => i.quantity)
-    //     .forEach(function(value, index) {
-    //       count = count + value[index];
-    //     });
-    //   this.productCountInCard = count;
-    // });
+
   }
 
   logout() {

@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: row;
 }
+
 .nav-product {
   width: 25%;
 }
@@ -11,12 +12,15 @@
   flex-flow: row wrap;
   width: 75%;
 }
+
 .card {
   width: 30%;
-  margin: 0 auto;
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
 }
 
+img {
+  height: 200px;
+}
 @media screen and (max-width: 992px) {
   .nav-product {
     width: 35%;
@@ -25,16 +29,17 @@
   .card-container {
     width: 65%;
   }
+
   .card {
     width: 44%;
     margin: 3% auto;
   }
 }
-
 @media screen and (max-width: 768px) {
   .products-container {
     flex-flow: column;
   }
+
   .nav-product {
     width: 100%;
   }
@@ -42,6 +47,7 @@
   .card-container {
     width: 100%;
   }
+
   .card {
     width: 46%;
     margin: 2% auto;

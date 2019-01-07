@@ -11,21 +11,25 @@ export class ProductCardComponent implements OnInit {
   @Input('product') product: Product;
   @Input('show-actions') showActions: boolean = true;
   @Input('shopping-card') shoppingCard;
+  @Input('image-height') imageHeight;
 
-  constructor(private shoppingCardService: ShoppingCardService) {}
+ 
 
-  ngOnInit() {}
+  constructor(private shoppingCardService: ShoppingCardService) { }
+
+  ngOnInit() { }
 
   addToCard() {
     this.shoppingCardService.addToCard(this.product);
   }
 
-  removeFromCard(){
+  removeFromCard() {
     this.shoppingCardService.removeFromCard(this.product);
   }
 
   getQuantity() {
-    if (!this.shoppingCard) return 0;
+    if (!this.shoppingCard || !this.shoppingCard.items) return 0;
+
 
     let item = this.shoppingCard.items[this.product.key];
     let quantity = item ? item.quantity : 0;

@@ -1,23 +1,12 @@
 <mat-card *ngIf="product.title || product.imageUrl || product.price">
-  <img
-    *ngIf="product.imageUrl"
-    mat-card-image
-    height="200px"
-    [src]="product.imageUrl"
-    [alt]="product.title"
-  />
+  <img *ngIf="product.imageUrl" [height]="imageHeight" mat-card-image [src]="product.imageUrl" [alt]="product.title" />
   <mat-card-content>
     <h5>{{ product.title }}</h5>
     <h6>{{ product.price | currency: 'USD' }}</h6>
   </mat-card-content>
   <mat-card-actions *ngIf="showActions">
-    <button
-      *ngIf="getQuantity() === 0; else updateQuantity"
-      (click)="addToCard()"
-      class="add-to-card"
-      mat-raised-button
-      color="warn"
-    >
+    <button *ngIf="getQuantity() === 0; else updateQuantity" (click)="addToCard()" class="add-to-card"
+      mat-raised-button color="warn">
       Add to Card
     </button>
     <ng-template #updateQuantity>
@@ -29,12 +18,7 @@
         </div>
         <div class="col-6 text-center">{{ getQuantity() }} in card</div>
         <div class="col-3 text-right">
-          <button
-            (click)="addToCard()"
-            style="min-width: 50px;"
-            mat-raised-button
-            color="warn"
-          >
+          <button (click)="addToCard()" style="min-width: 50px;" mat-raised-button color="warn">
             +
           </button>
         </div>
